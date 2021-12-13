@@ -1,15 +1,18 @@
 :root{
+    --red: #FF0000;
     --royalblue: #4169e1;
-    --lightblue: #005377;
     --green: #06a77d;
+    --lightblue: #005377;
+    --black: #000000;
     --yellow: #d5c67a;
     --orange: #f1a208;
+
 
 }
 
 body{
     color: var(--royalblue);
-    background: var(--lightblue);
+    background: var(--red);
 }
 
 .navbar{
