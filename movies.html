@@ -11,7 +11,7 @@
 <body>
     <nav class="navbar">
         <a class="navbar-brand" href="#">Movie Application</a>
-        <button class="btn" data-toggle="clip" data-target="#addClip">Add a Movie</button>
+        <button class="btn" data-toggle="modal" data-target="#addModel">Add a Movie</button>
     </nav>
     <div class="container-fluid loading-container">
         <div class="loading hidden">
@@ -26,9 +26,40 @@
     </div>
 
     <div class="modal-container"></div>
+    <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModal" aria-hidden="true">
+        <div class="model-dialog" role="document">
+            <div class="modL-header">
+                <h5 class="modal-name" id="modalAdd">Add a new Movie<</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label='Close'>
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input id="addTitle" type="text" class="form-control mb-2 mr-sm-2" placeholder="Title">
+                <input id="addYear" type="text" class="'form-control mb-2 mr-sm-2" placeholder="Year it was released">
+                <input id="addGenre" type="text" class="form-control mb-2 mr-sm-2" placeholder="Genre">
 
-
-
+                <div class="input-group mb-2 mr-sm-2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">Rating</div>
+                    </div>
+                    <select id="ratings" class="form-control">
+                        <option selected>Choose</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
+                <textarea id="movieInfo" type="text" class="form-control mb-2 mr-sm-2" placeholder="Plot"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button id="anotherMovie" class="btn btn-primary" data-dismiss="modal">Submit</button>
+            </div>
+        </div>
+    </div>
 
 
 <!--<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>-->
