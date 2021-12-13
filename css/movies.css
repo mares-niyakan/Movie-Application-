@@ -1,0 +1,17 @@
+:root{
+    --royalblue: #4169e1;
+    --lightblue: #005377;
+    --green: #06a77d;
+    --yellow: #d5c67a;
+    --orange: #f1a208;
+
+}
+
+body{
+    color: var(--royalblue);
+    background: var(--lightblue);
+}
+
+.navbar{
+    background: var(--orange)
+}
