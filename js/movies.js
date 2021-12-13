@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).ready(function () {
     "use strict";
 
     //Glitch movie API url
@@ -11,36 +11,36 @@ $(document).ready(function(){
     let modalHTML = ""
     const deleteOptions = {
         method: 'DELETE',
-       header:{
+        header: {
             'Content-Type': 'application/json'
-       }
-   }
+        }
+    }
 
-   const fetchData = (delay) => {
+    const fetchData = (delay) => {
         $('.loading-container').css('margin-top', '150px')
         loading.toggle('hidden')
         row.toggle('hidden')
-        setTimeout(function(){
-           fetch(url)
-               .then(res => res.json())
-               .then(data => {
-                   renderHTML(data);
-               })
-               .then($('.loading-container').css('margin-top', '0'))
-               .then(loading.toggle('hidden'))
-               .then(row.toggle('hidden'))
-               .catch(error => console.error(error))
-       }, delay)
-   }
+        setTimeout(function () {
+            fetch(url)
+                .then(res => res.json())
+                .then(data => {
+                    renderHTML(data);
+                })
+                .then($('.loading-container').css('margin-top', '0'))
+                .then(loading.toggle('hidden'))
+                .then(row.toggle('hidden'))
+                .catch(error => console.error(error))
+        }, delay)
+    }
 
-   const renderHTML = data =>   {
+    const renderHTML = data => {
         mainHTML = ""
         modalHTML = ""
         createModal(data)
-        for(let ele of data)    {
+        for (let ele of data) {
             mainHTML += `<div class= "col-12 col-md-6 col-lg-4 movie-columns">
             <div class ="card" style= "width: 18rem;">
-<!--            //Need to add a image-->
+<!--          //Need to add a image -->
             <img id="movie${ele.id}" src="${ele.poster}" class="card-img-top" alt="movie poster" style="height: 100%; width: auto">
             <div class="info${ele.id} hidden">
             <div class="card-body">
@@ -54,32 +54,36 @@ $(document).ready(function(){
 </div>
 </div>
 </div>
-</div>
+</div>`
         }
-  
-        row.html(mainHTML)
-        for(let ele of data)    {
+    }
+    row.html(mainHTML)
+    for(let ele of data)    {
         $(`#deleteMovie${ele.id}`).click(function() {
-        $(`#deleteMovie${ele.id}`).attr('disabled')
-        let userDelete = confirm(`Are you sure I should delete ${ele.title}?`)
-        if (userDelete)  {
-            fetch(`${url}/${ele.id}`, deleteOptions)
-   
-       
-        
-        
-                
-        
-        
+            $(`#deleteMovie${ele.id}`).attr('disabled')
+            let movieDeleted = confirm(`Are you sure I should delete ${ele.title}?`)
+            // if deleted fetch
+            if (movieDeleted) {
+                fetch(`${url}/${ele.id}`, deleteOptions)
+                    .then(res => res.json())
+                    .then(data => console.log(data))
+                    .then(fetchData(2000))
+                    .then($(`#deletedMovie${ele.id}`).removeAttribute('disabled'))
+                    .catch(error => console.error(error))
+            } else {
+                $(`#editMovie${ele.id}`).removeAttribute('disabled')
+            }
+        })
+    }
+
+});
+
 //
-// //get request
-//     let getAllMovies = () => {
-//         return fetch(MOVIE_URL).then(resp => resp.json()).catch(err => console.error(err));
-//     }
-//     getAllMovies().then(data => console.log(data));
+// //get request-->
+//     let getAllMovies = () => {-->
+//         return fetch(MOVIE_URL).then(resp => resp.json()).catch(err => console.error(err));-->
+//     }-->
+//     getAllMovies().then(data => console.log(data));-->
 
 
 
-
-               
- });
