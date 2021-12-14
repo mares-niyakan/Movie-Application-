@@ -1,20 +1,61 @@
 :root{
-    --red: #ee9191;
-    --royalblue: #ec8329;
-    --green: #06a77d;
+    --red: #fa0000;
+    --royalblue: #003cff;
+    --green: #358d13;
     --lightblue: #80cdf6;
     --black: #000000;
     --yellow: #d5c67a;
-    --orange: #687773;
+    --orange: #ff7b00;
+    --white: #FFFFFF
 
 
 }
 
 body{
-    color: var(--royalblue);
+    color: var(--white);
     background: var(--red);
+    font-weight: bold;
 }
 
 .navbar{
     background: var(--green)
 }
+
+.hidden{
+    display: none;
+}
+
+.card{
+    background: var(--red);
+    border: 3px solid var(--black);
+}
+
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.movie-columns {
+    display: flex;
+    justify-content: center;
+    margin: 15px auto;
+}
+
+.movie-container {
+    display: flex;
+    justify-content: center;
+    margin: 15px auto;
+}
+
+.btn-success{
+    font-weight: bold;
+}
+
+
+/*.button-row {*/
+/*    display: flex;*/
+/*}*/
+/*.button {*/
+/*    flex-grow: 1;*/
+/*}*/
